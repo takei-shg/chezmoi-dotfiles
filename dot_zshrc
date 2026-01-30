@@ -1,0 +1,91 @@
+# zplug
+source ~/.zplug/init.zsh
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+# Vanilla shell
+zplug "yous/vanilli.sh"
+
+# theme
+zplug "yous/lime"
+
+# Syntax highlighting bundle. zsh-syntax-highlighting must be loaded after
+# excuting compinit command and sourcing other plugins.
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# history関係
+zplug "zsh-users/zsh-history-substring-search", defer:3
+
+# # Tracks your most used directories, based on 'frequency'.
+# zplug "rupa/z", use:"*.sh"
+
+# A next-generation cd command with an interactive filter
+# zplug "b4b4r07/enhancd", use:init.sh
+
+# タイプ補完
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "chrissicool/zsh-256color"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load
+
+# Lime theme settings
+export LIME_DIR_DISPLAY_COMPONENTS=2
+
+# Better history searching with arrow keys
+if zplug check "zsh-users/zsh-history-substring-search"; then
+    bindkey "$terminfo[kcuu1]" history-substring-search-up
+    bindkey "$terminfo[kcud1]" history-substring-search-down
+fi
+
+# Add color to ls command
+export CLICOLOR=1
+export LSCOLORS="cxfxcxdxbxegedabagacad"
+export LS_COLORS="di=32:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/shiget/.sdkman"
+[[ -s "/Users/shiget/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shiget/.sdkman/bin/sdkman-init.sh"
+
+# ### Added by Zplugin's installer
+# source "$HOME/.zplugin/bin/zplugin.zsh"
+# autoload -Uz _zplugin
+# (( ${+_comps} )) && _comps[zplugin]=_zplugin
+# ### End of Zplugin installer's chunk
+# # https://qiita.com/9sako6/items/23b164a95b91c644aade
+# zplugin load momo-lab/zsh-abbrev-alias # 略語を展開する
+# zplugin ice wait'!0'; zplugin load zsh-users/zsh-syntax-highlighting # 実行可能なコマンドに色付け
+# zplugin ice wait'!0'; zplugin load zsh-users/zsh-completions # 補完
+# zplugin light yous/lime
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# # fzf https://qiita.com/kamykn/items/aa9920f07487559c0c7e
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+# export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border'
+# export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+# export FZF_TMUX=1
+
+# pnpm
+export PNPM_HOME="/Users/shiget/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+eval "$(mise activate zsh)"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/shiget/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
