@@ -27,6 +27,9 @@ alias gn="git now --all --stat"
 alias tig="/usr/local/bin/tig --all"
 
 alias chz="chezmoi"
+alias la="eza -a --git -g -h --oneline"
+alias ls="eza"
+alias src='cd ~/src'
 
 # 2011/Dec/30 homebrew install
 export PATH="/usr/local/bin:$PATH"
