@@ -35,5 +35,3 @@ keybind = ctrl+t>r=reload_config
 
 # tmuxと同じ「prefix 2回で prefix を送る」(Ctrl+t をアプリに流したいとき用)
 keybind = ctrl+t>ctrl+t=text:\x14
-
-keybind = ctrl+t>y=copy_to_clipboard
