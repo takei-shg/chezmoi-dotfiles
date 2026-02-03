@@ -1,6 +1,16 @@
 shell-integration = zsh
 window-inherit-working-directory = true
 
+background = #222222
+
+# 非フォーカス split を少し暗くする
+unfocused-split-opacity = 0.5
+unfocused-split-fill    = #000000
+
+# 分割線も少し目立たせる
+split-divider-color     = #444444
+
+
 # --- Ctrl+t を leader にする
 keybind = ctrl+t>c=new_tab
 keybind = ctrl+t>n=next_tab
