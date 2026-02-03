@@ -30,6 +30,7 @@ alias chz="chezmoi"
 alias la="eza -a --git -g -h --oneline"
 alias ls="eza"
 alias src='cd ~/src'
+alias gg='ghq'
 
 # 2011/Dec/30 homebrew install
 export PATH="/usr/local/bin:$PATH"

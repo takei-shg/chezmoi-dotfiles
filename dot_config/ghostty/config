@@ -1,0 +1,39 @@
+shell-integration = zsh
+window-inherit-working-directory = true
+
+# --- Ctrl+t を leader にする
+keybind = ctrl+t>c=new_tab
+keybind = ctrl+t>n=next_tab
+keybind = ctrl+t>p=previous_tab
+
+# 分割
+keybind = ctrl+t>space=new_split:down
+keybind = ctrl+t>enter=new_split:right
+
+# split移動
+keybind = ctrl+t>o=goto_split:next
+
+# フォーカス移動
+keybind = ctrl+t>h=goto_split:left
+keybind = ctrl+t>j=goto_split:down
+keybind = ctrl+t>k=goto_split:up
+keybind = ctrl+t>l=goto_split:right
+
+# リサイズ
+keybind = ctrl+t>shift+h=resize_split:left,30
+keybind = ctrl+t>shift+j=resize_split:down,30
+keybind = ctrl+t>shift+k=resize_split:up,30
+keybind = ctrl+t>shift+l=resize_split:right,30
+
+# 閉じる系
+keybind = ctrl+t>x=close_surface
+keybind = ctrl+t>w=close_tab
+
+# 設定編集/リロード
+keybind = ctrl+t>,=open_config
+keybind = ctrl+t>r=reload_config
+
+# tmuxと同じ「prefix 2回で prefix を送る」(Ctrl+t をアプリに流したいとき用)
+keybind = ctrl+t>ctrl+t=text:\x14
+
+keybind = ctrl+t>y=copy_to_clipboard
